@@ -25,7 +25,7 @@ public class BaseClass {
         WebDriverManager.chromedriver().setup();
         URL url = new URL("http://hub:4444/");
         ChromeOptions chromeOptions = new ChromeOptions();
-        driver = runMode == "remote" ? new ChromeDriver() : new RemoteWebDriver(url, chromeOptions);
+        driver = runMode != "remote" ? new ChromeDriver() : new RemoteWebDriver(url, chromeOptions);
         driver.get(URL);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.manage().window().maximize();
