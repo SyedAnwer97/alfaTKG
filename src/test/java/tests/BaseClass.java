@@ -18,7 +18,7 @@ public class BaseClass {
 
     private String URL = "https://www.alfadock-pack.com/";
     private WebDriver driver;
-    private String runMode = "local";
+    private String runMode = "remote";
 
     @Test
     public void DemoTest() throws MalformedURLException {
