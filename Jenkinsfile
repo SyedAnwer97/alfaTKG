@@ -8,7 +8,7 @@ pipeline{
         }
         stage('build docker image'){
             steps{
-            bat "docker build -t=syedanwer1997/alfatkg ."
+            bat "docker build -t=syedanwer1997/alfatkg:latest ."
             }
         }
         stage('push docker image'){
@@ -17,7 +17,9 @@ pipeline{
         }
             steps{
             bat 'docker login -u %DOCKER_HUB_USR% -p %DOCKER_HUB_PSW%'
-            bat "docker push syedanwer1997/alfatkg"
+            bat "docker push syedanwer1997/alfatkg:latest"
+            bat "docker tag syedanwer1997/alfatkg:latest syedanwer1997/alfatkg:${env.BUILD_NUMBER}"
+            bat "docker push syedanwer1997/alfatkg:${env.BUILD_NUMBER}"
             }
         }
     }

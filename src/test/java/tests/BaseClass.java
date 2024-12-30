@@ -18,14 +18,14 @@ public class BaseClass {
 
     private String URL = "https://www.alfadock-pack.com/";
     private WebDriver driver;
-    private String runMode = "local";
+    private String runMode = "remote";
 
     @Test
     public void DemoTest() throws MalformedURLException {
         WebDriverManager.chromedriver().setup();
-        URL url = new URL("http://hub:4444/");
+        URL url = new URL("http://localhost:4444/");
         ChromeOptions chromeOptions = new ChromeOptions();
-        driver = runMode == "remote" ? new ChromeDriver() : new RemoteWebDriver(url, chromeOptions);
+        driver = runMode != "remote" ? new ChromeDriver() : new RemoteWebDriver(url, chromeOptions);
         driver.get(URL);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.manage().window().maximize();

@@ -16,8 +16,8 @@ services:
       - SE_NODE_OVERRIDE_MAX_SESSIONS=true
       - SE_NODE_MAX_SESSIONS=3
   alfatkg:
-    image: syedanwer97/alfatkg
-    depends_on:
-      - chrome
-    volumes:
-      - ./output/test-output:/home/official_alfaTKG/test-output
+      image: syedanwer1997/alfatkg
+      depends_on:
+        - chrome
+      volumes:
+        - ./output/test-output:/home/official_alfaTKG/test-output
