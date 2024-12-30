@@ -23,7 +23,7 @@ public class BaseClass {
     @Test
     public void DemoTest() throws MalformedURLException {
         WebDriverManager.chromedriver().setup();
-        URL url = new URL("http://localhost:4444/");
+        URL url = new URL("http://hub:4444/");
         ChromeOptions chromeOptions = new ChromeOptions();
         driver = runMode != "remote" ? new ChromeDriver() : new RemoteWebDriver(url, chromeOptions);
         driver.get(URL);
