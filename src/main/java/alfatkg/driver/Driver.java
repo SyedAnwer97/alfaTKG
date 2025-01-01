@@ -1,5 +1,6 @@
 package alfatkg.driver;
 
+import alfatkg.enums.PropertyKey;
 import alfatkg.utils.ReadConfig;
 import org.openqa.selenium.WebDriver;
 
@@ -10,11 +11,9 @@ public final class Driver {
     private Driver() {
     }
 
-    private static WebDriver driver;
-
     public static void initDriver() {
         if (Objects.isNull(DriverManger.getDriver())) {
-            driver = DriverFactory.getDriver(ReadConfig.getProperty("BROWSER"));
+            WebDriver driver = DriverFactory.getDriver(ReadConfig.getProperty(PropertyKey.BROWSER));
             DriverManger.setDriver(driver);
         }
     }

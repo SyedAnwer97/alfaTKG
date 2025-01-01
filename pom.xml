@@ -31,8 +31,7 @@
                 <version>3.1.2</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <browser>firefox</browser>
-                        <selenium.grid.enabled>true</selenium.grid.enabled>
+                        <browser>chrome</browser>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <file>testng.xml</file>
@@ -41,7 +40,6 @@
                     <reportsDirectory>target/test-output</reportsDirectory>
                 </configuration>
             </plugin>
-            <!-- To package our page objects, test classes into jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -79,7 +77,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- To copy resources into the output directory -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
