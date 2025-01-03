@@ -1,6 +1,7 @@
 package alfatkg.pages;
 
 import alfatkg.enums.PropertyKey;
+import alfatkg.factories.WaitFactory;
 import alfatkg.utils.DynamicXpath;
 import alfatkg.utils.ReadConfig;
 import org.openqa.selenium.By;

@@ -1,6 +1,7 @@
 package alfatkg.pages;
 
 import alfatkg.enums.WaitStrategy;
+import alfatkg.factories.WaitFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 

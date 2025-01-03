@@ -7,12 +7,13 @@ import alfatkg.utils.ReadConfig;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.lang.reflect.Method;
 import java.time.Duration;
 
-public class BaseTest {;
+public class BaseTest {
 
     @BeforeMethod
-    public void beforeMethod() {
+    public void beforeMethod(Method method) {
         Driver.initDriver();
         DriverManger.getDriver().get(ReadConfig.getProperty(PropertyKey.URL));
         DriverManger.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
@@ -23,4 +24,5 @@ public class BaseTest {;
     public static void AfterMethod() {
         Driver.tearDown();
     }
+
 }

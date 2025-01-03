@@ -1,4 +1,4 @@
-package alfatkg.pages;
+package alfatkg.factories;
 
 import alfatkg.driver.DriverManger;
 import alfatkg.enums.WaitStrategy;

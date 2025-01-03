@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="C:/Users/anwer/IdeaProjects/official_alfaTKG" parallel="methods" thread-count="2">
+    <listeners>
+        <listener class-name="alfatkg.listeners.AnnotationTransformer"></listener>
+        <listener class-name="alfatkg.listeners.TestListeners"></listener>
+    </listeners>
+    <test verbose="2" preserve-order="true" name="C:/Users/anwer/IdeaProjects/official_alfaTKG"
+          parallel="methods" thread-count="2">
         <classes>
             <class name="tests.TestCase1">
                 <methods>

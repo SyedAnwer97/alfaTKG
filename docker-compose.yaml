@@ -21,3 +21,4 @@ services:
         - chrome
       volumes:
         - ./output/test-output:/home/official_alfaTKG/test-output
+        - ./output/extent-test-output:/home/official_alfaTKG/extent-test-output
