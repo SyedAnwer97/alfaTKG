@@ -3,6 +3,7 @@ package alfatkg.factories;
 import alfatkg.consant.FrameworkConstants;
 import alfatkg.enums.Browser;
 import alfatkg.enums.PropertyKey;
+import alfatkg.exceptions.InvalidGridHostException;
 import alfatkg.utils.ReadConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -22,40 +23,23 @@ public final class DriverFactory {
     private DriverFactory() {
     }
 
-    private static EnumMap<Browser, Supplier<WebDriver>> map = new EnumMap<>(Browser.class);
-    private static WebDriver driver = null;
-    private static URL url;
+    private static final EnumMap<Browser, Supplier<WebDriver>> map = new EnumMap<>(Browser.class);
 
-    private static Supplier<WebDriver> chrome = () -> {
-        if (ReadConfig.getProperty(PropertyKey.RUN_MODE).equalsIgnoreCase(FrameworkConstants.getRemote())) {
-            ChromeOptions chromeOptions = new ChromeOptions();
-            try {
-                url = new URL(ReadConfig.getProperty(PropertyKey.GRID_URL));
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
-            driver = new RemoteWebDriver(url, chromeOptions);
-        } else {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-        }
-        return driver;
+    private static final Supplier<WebDriver> chrome = () -> {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--incognito");
+        WebDriverManager.chromedriver().setup();
+        return ReadConfig.getProperty(PropertyKey.RUN_MODE).equalsIgnoreCase(FrameworkConstants.getRemote())
+                ? new RemoteWebDriver(getGridURL(), chromeOptions) : new ChromeDriver(chromeOptions);
     };
 
-    private static Supplier<WebDriver> firefox = () -> {
-        if (ReadConfig.getProperty(PropertyKey.RUN_MODE).equalsIgnoreCase(FrameworkConstants.getRemote())) {
-            FirefoxOptions firefoxOptions = new FirefoxOptions();
-            try {
-                url = new URL(ReadConfig.getProperty(PropertyKey.GRID_URL));
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
-            driver = new RemoteWebDriver(url, firefoxOptions);
-        } else {
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
-        }
-        return driver;
+    private static final Supplier<WebDriver> firefox = () -> {
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.addArguments("-private");
+        WebDriverManager.firefoxdriver().setup();
+        return ReadConfig.getProperty(PropertyKey.RUN_MODE).equalsIgnoreCase(FrameworkConstants.getRemote())
+                ? new RemoteWebDriver(getGridURL(), firefoxOptions) : new FirefoxDriver(firefoxOptions);
+
     };
 
     static {
@@ -65,6 +49,16 @@ public final class DriverFactory {
 
     public static WebDriver getDriver(String browser) {
         return map.get(Browser.valueOf(browser.toUpperCase())).get();
+    }
+
+    public static URL getGridURL() {
+        URL url;
+        try {
+            url = new URL(ReadConfig.getProperty(PropertyKey.GRID_URL));
+        } catch (MalformedURLException e) {
+            throw new InvalidGridHostException("The Grid connection is not valid. Please check the host and port");
+        }
+        return url;
     }
 
 }

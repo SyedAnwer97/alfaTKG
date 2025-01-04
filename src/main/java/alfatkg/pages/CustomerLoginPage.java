@@ -29,14 +29,13 @@ public final class CustomerLoginPage extends PageActions {
         return new CustomerLoginPage();
     }
 
-    public CustomerLoginPage clickLogin() {
+    public UserLoginPage clickLogin() {
         customClick(buttonCustomerLogin);
-        return new CustomerLoginPage();
+        return new UserLoginPage();
     }
 
     public UserLoginPage customerLogin() {
-        selectLanguage().enterCustomerName().enterCustomerPassword().clickLogin();
-        return new UserLoginPage();
+        return selectLanguage().enterCustomerName().enterCustomerPassword().clickLogin();
     }
 
 }

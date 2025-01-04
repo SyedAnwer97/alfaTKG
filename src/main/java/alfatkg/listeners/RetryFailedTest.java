@@ -5,15 +5,15 @@ import org.testng.ITestResult;
 
 public class RetryFailedTest implements IRetryAnalyzer {
 
-    private static int count = 0;
-    private static final int retryCount = 1;
+    int count = 0;
 
     @Override
     public boolean retry(ITestResult iTestResult) {
-
-        boolean value = false;
+        int retryCount = 1;
+        boolean value;
         value = count < retryCount;
         count++;
         return value;
     }
+
 }

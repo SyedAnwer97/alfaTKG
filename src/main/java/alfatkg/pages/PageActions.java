@@ -21,4 +21,5 @@ public class PageActions {
         Select select = new Select(WaitFactory.wait(WaitStrategy.VISIBLE, locator));
         selectConsumer.accept(select);
     }
+
 }

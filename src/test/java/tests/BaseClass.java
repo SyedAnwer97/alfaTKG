@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import java.lang.reflect.Method;
 import java.time.Duration;
 
-public class BaseTest {
+public class BaseClass {
 
     @BeforeMethod
     public void beforeMethod(Method method) {

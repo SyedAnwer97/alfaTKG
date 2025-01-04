@@ -38,12 +38,10 @@ public class UserLoginPage extends PageActions {
     }
 
     public AlfaDOCKHomePage userLogin() {
-        enterUsername().enterUserPassword().clickUserLogin();
-        return new AlfaDOCKHomePage();
+        return enterUsername().enterUserPassword().clickUserLogin();
     }
 
     public CustomerLoginPage userLogout() {
-        clickUserLogout();
-        return new CustomerLoginPage();
+        return clickUserLogout();
     }
 }
