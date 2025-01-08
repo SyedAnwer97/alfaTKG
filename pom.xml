@@ -12,6 +12,18 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <selenium-java>4.10.0</selenium-java>
+        <webdrivermanager>5.8.0</webdrivermanager>
+        <testng>7.10.0</testng>
+        <extentreports>5.1.1</extentreports>
+        <lombok>1.18.30</lombok>
+        <assertj-core>3.20.0</assertj-core>
+        <javafaker>1.0.0</javafaker>
+        <maven-compiler-plugin>3.11.0</maven-compiler-plugin>
+        <maven-surefire-plugin>3.1.2</maven-surefire-plugin>
+        <maven-jar-plugin>3.3.0</maven-jar-plugin>
+        <maven-dependency-plugin>3.6.0</maven-dependency-plugin>
+        <maven-resources-plugin>3.3.1</maven-resources-plugin>
     </properties>
 
     <build>
@@ -20,7 +32,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>${maven-compiler-plugin}</version>
                 <configuration>
                     <release>17</release>
                 </configuration>
@@ -28,7 +40,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>${maven-surefire-plugin}</version>
                 <configuration>
                     <systemPropertyVariables>
                         <browser>chrome</browser>
@@ -36,14 +48,14 @@
                     <suiteXmlFiles>
                         <file>testng.xml</file>
                     </suiteXmlFiles>
-                    <threadCount>3</threadCount>
+                    <threadCount>2</threadCount>
                     <reportsDirectory>target/test-output</reportsDirectory>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>${maven-jar-plugin}</version>
                 <configuration>
                     <outputDirectory>${project.build.directory}/project-resources/libs</outputDirectory>
                 </configuration>
@@ -61,7 +73,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>${maven-dependency-plugin}</version>
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>
@@ -80,7 +92,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.1</version>
+                <version>${maven-resources-plugin}</version>
                 <executions>
                     <execution>
                         <id>copy-resources</id>
@@ -116,22 +128,39 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.10.0</version>
+            <version>${selenium-java}</version>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.8.0</version>
+            <version>${webdrivermanager}</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.10.0</version>
+            <version>${testng}</version>
         </dependency>
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
-            <version>5.1.1</version>
+            <version>${extentreports}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker}</version>
         </dependency>
     </dependencies>
 

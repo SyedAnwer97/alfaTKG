@@ -28,8 +28,9 @@ public final class DriverFactory {
     private static final Supplier<WebDriver> chrome = () -> {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--incognito");
+        chromeOptions.addArguments("--use-fake-ui-for-media-stream");
         WebDriverManager.chromedriver().setup();
-        return ReadConfig.getProperty(PropertyKey.RUN_MODE).equalsIgnoreCase(FrameworkConstants.getRemote())
+        return ReadConfig.getProperty(PropertyKey.RUN_MODE).equalsIgnoreCase(FrameworkConstants.getREMOTE())
                 ? new RemoteWebDriver(getGridURL(), chromeOptions) : new ChromeDriver(chromeOptions);
     };
 
@@ -37,7 +38,7 @@ public final class DriverFactory {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.addArguments("-private");
         WebDriverManager.firefoxdriver().setup();
-        return ReadConfig.getProperty(PropertyKey.RUN_MODE).equalsIgnoreCase(FrameworkConstants.getRemote())
+        return ReadConfig.getProperty(PropertyKey.RUN_MODE).equalsIgnoreCase(FrameworkConstants.getREMOTE())
                 ? new RemoteWebDriver(getGridURL(), firefoxOptions) : new FirefoxDriver(firefoxOptions);
 
     };

@@ -21,7 +21,7 @@ public final class ReadConfig {
     private static final HashMap<String, String> propertyMap = new HashMap<>();
 
     static {
-        try (InputStream inputStream = ResourceLoader.getSource(FrameworkConstants.getPropertyFileLocation())) {
+        try (InputStream inputStream = ResourceLoader.getSource(FrameworkConstants.getPROPERTY_FILE_LOCATION())) {
             properties.load(inputStream);
             properties.forEach((key, value) -> propertyMap.put(String.valueOf(key).toLowerCase(),
                     String.valueOf(value).toLowerCase().trim()));

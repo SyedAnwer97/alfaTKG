@@ -1,37 +1,35 @@
 package tests;
 
-import alfatkg.enums.Logs;
-import alfatkg.extentreport.ExtentFactory;
-import alfatkg.pages.CustomerLoginPage;
-import alfatkg.pages.UserLoginPage;
-import com.google.common.util.concurrent.Uninterruptibles;
+import alfatkg.consant.FrameworkConstants;
+import alfatkg.driver.DriverManger;
+import alfatkg.facade.LoginAndNavigateToGPN;
+import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 public class TestCase1 extends BaseClass {
 
     @Test()
-    public void DemoTest() {
-        new CustomerLoginPage().customerLogin().userLogin();
-        ExtentFactory.log(Logs.INFO, "this is test 1");
-        Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(3));
+    public void homeIconNavigationTest() {
+        new LoginAndNavigateToGPN().loginToGPN().clickHomeIcon();
+        Assertions.assertThat(DriverManger.getDriver().getWindowHandles().size()).isGreaterThan(1).isLessThan(3);
+        Assertions.assertThat(DriverManger.getDriver().getTitle()).isEqualToIgnoringCase(FrameworkConstants.getALFADOCK_TITLE());
     }
 
-    @Test()
-    public void DemoTest2() {
-        new CustomerLoginPage().customerLogin();
-        ExtentFactory.log(Logs.INFO, "this is test 2");
-        new UserLoginPage().userLogin().verifyCompanyLogo();
-        Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(3));
+    @Test
+    public void scannerCameraPopupTest() {
+        boolean isScannerDialogDisplayed = new LoginAndNavigateToGPN().loginToGPN().clickScannerIcon().isScannerDialogDisplayed();
+        Assertions.assertThat(isScannerDialogDisplayed).isTrue();
     }
 
-    @Test()
-    public void DemoTest3() {
-        new CustomerLoginPage().customerLogin();
-        ExtentFactory.log(Logs.INFO, "this is test 3");
-        new UserLoginPage().userLogout().clickLogin();
-        Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(3));
+    @Test
+    public void selectDateRangeTest() {
+        new LoginAndNavigateToGPN().loginToGPN().pickFromAndToDate();
+    }
+
+    @Test
+    public void aiReportNavigation() {
+        new LoginAndNavigateToGPN().loginToGPN().clickAiReportIcon();
+        Assertions.assertThat(DriverManger.getDriver().getTitle()).isEqualToIgnoringCase(FrameworkConstants.getAI_REPORT_TITLE());
     }
 
 }

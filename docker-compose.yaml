@@ -15,10 +15,24 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - SE_NODE_OVERRIDE_MAX_SESSIONS=true
       - SE_NODE_MAX_SESSIONS=3
+  firefox:
+    image: selenium/node-firefox:4.16
+    shm_size: '2g'
+    depends_on:
+      - hub
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_NODE_MAX_SESSIONS=3
   alfatkg:
       image: syedanwer1997/alfatkg
       depends_on:
         - chrome
+      environment:
+        - BROWSER=chrome
+        - THREAD_COUNT=3
       volumes:
         - ./output/test-output:/home/official_alfaTKG/test-output
         - ./output/extent-test-output:/home/official_alfaTKG/extent-test-output

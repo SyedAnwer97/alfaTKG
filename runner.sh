@@ -35,4 +35,8 @@ done
 echo "Selenium Grid is up and running. Running the test...."
 
 # Start the java command
-java -cp "libs/*" org.testng.TestNG testng.xml
+java -cp "libs/*" \
+      -D"browser"="${BROWSER-chrome}" \
+      org.testng.TestNG \
+      -threadcount "${THREAD_COUNT:-1}" \
+      testng.xml

@@ -22,7 +22,7 @@ public class ExtentReport {
     public static void initReport() {
         if (Objects.isNull(extentReports)) {
             extentReports = new ExtentReports();
-            extentSparkReporter = new ExtentSparkReporter(new File(FrameworkConstants.getExtentTestReportPath()));
+            extentSparkReporter = new ExtentSparkReporter(new File(FrameworkConstants.getEXTENT_TEST_REPORT_PATH()));
             setReportProperties();
             extentReports.attachReporter(extentSparkReporter);
             extentReports.setSystemInfo("Executed on OS & Java: ", System.getProperty("os.name") + " Java : " + System.getProperty("java.version"));
