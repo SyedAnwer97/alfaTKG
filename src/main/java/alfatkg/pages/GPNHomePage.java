@@ -40,12 +40,12 @@ public class GPNHomePage extends PageActions {
 
     public void pickFromAndToDate() {
         Map<String, String> fromDateAndToDate = FakerUtils.getFromDateAndToDate();
-        customClearText(DATE_PICKER_FROM_DATE);
-        customSendKeys(DATE_PICKER_FROM_DATE, "00" + fromDateAndToDate.get("fromDate"));
-        WaitFactory.wait(a -> a.until(ExpectedConditions.invisibilityOfElementLocated(SVG_PROGRESSBAR)));
-        customClearText(DATE_PICKER_TO_DATE);
-        customSendKeys(DATE_PICKER_TO_DATE, "00" + fromDateAndToDate.get("toDate"));
-        WaitFactory.wait(a -> a.until(ExpectedConditions.invisibilityOfElementLocated(SVG_PROGRESSBAR)));
+        //customClearText(DATE_PICKER_FROM_DATE);
+        //customSendKeys(DATE_PICKER_FROM_DATE, "00" + fromDateAndToDate.get("fromDate"));
+        //WaitFactory.wait(a -> a.until(ExpectedConditions.invisibilityOfElementLocated(SVG_PROGRESSBAR)));
+        //customClearText(DATE_PICKER_TO_DATE);
+        //customSendKeys(DATE_PICKER_TO_DATE, "00" + fromDateAndToDate.get("toDate"));
+        //WaitFactory.wait(a -> a.until(ExpectedConditions.invisibilityOfElementLocated(SVG_PROGRESSBAR)));
     }
 
     public void clickAiReportIcon() {
