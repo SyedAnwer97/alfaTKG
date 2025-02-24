@@ -24,7 +24,7 @@ public class PageActions {
     protected void customClick(By locator, String elementName) {
         try {
             WaitFactory.wait(WaitStrategy.CLICKABLE, locator).click();
-        } catch (TimeoutException e) {
+        } catch (TimeoutException | ElementClickInterceptedException e) {
             javascriptExecutor.executeScript("arguments[0].click();", DriverManger.getDriver().findElement(locator));
         }
         ExtentFactory.log(Logs.INFO, elementName.concat(" is get clicked."));
