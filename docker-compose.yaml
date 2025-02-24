@@ -32,7 +32,7 @@ services:
         - chrome
       environment:
         - BROWSER=chrome
-        - THREAD_COUNT=3
+        - THREAD_COUNT=2
       volumes:
         - ./output/test-output:/home/official_alfaTKG/test-output
         - ./output/extent-test-output:/home/official_alfaTKG/extent-test-output

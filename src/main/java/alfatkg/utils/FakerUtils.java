@@ -8,7 +8,7 @@ public class FakerUtils {
 
     private FakerUtils(){}
 
-    private static Faker faker = new Faker();
+    private final static Faker faker = new Faker();
 
     public static Map<String, String> getFromDateAndToDate() {
         String year = String.valueOf(faker.number().numberBetween(2020, 2025));

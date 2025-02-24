@@ -19,12 +19,12 @@ public final class WaitFactory {
     private static WebDriverWait wait;
 
     public static void wait(Consumer<WebDriverWait> waitConsumer) {
-        wait = new WebDriverWait(DriverManger.getDriver(), Duration.ofSeconds(10));
+        wait = new WebDriverWait(DriverManger.getDriver(), Duration.ofSeconds(20));
         waitConsumer.accept(wait);
     }
 
     public static WebElement wait(WaitStrategy waitStrategy, By locator) {
-        wait = new WebDriverWait(DriverManger.getDriver(), Duration.ofSeconds(10));
+        wait = new WebDriverWait(DriverManger.getDriver(), Duration.ofSeconds(20));
 
         switch (waitStrategy) {
             case CLICKABLE -> {

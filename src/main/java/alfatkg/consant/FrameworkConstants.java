@@ -2,11 +2,10 @@ package alfatkg.consant;
 
 import lombok.Getter;
 
-public class FrameworkConstants {
+public final class FrameworkConstants {
 
     private FrameworkConstants() {
     }
-
 
     @Getter
     private static final String PROPERTY_FILE_LOCATION = "property/config.properties";
@@ -20,4 +19,5 @@ public class FrameworkConstants {
     private static final String ALFADOCK_TITLE = "alfaDOCK";
     @Getter
     private static final String AI_REPORT_TITLE = "AiReport";
+
 }

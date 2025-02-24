@@ -24,7 +24,7 @@ public final class ReadConfig {
         try (InputStream inputStream = ResourceLoader.getSource(FrameworkConstants.getPROPERTY_FILE_LOCATION())) {
             properties.load(inputStream);
             properties.forEach((key, value) -> propertyMap.put(String.valueOf(key).toLowerCase(),
-                    String.valueOf(value).toLowerCase().trim()));
+                    String.valueOf(value).trim()));
             for (Object key : systemProperties.keySet())
                 if (propertyMap.containsKey(String.valueOf(key).toLowerCase()))
                     propertyMap.put(String.valueOf(key).toLowerCase(), systemProperties.getProperty(String.valueOf(key)));

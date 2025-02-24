@@ -16,6 +16,7 @@ public final class Driver {
         if (Objects.isNull(DriverManger.getDriver())) {
             WebDriver driver = DriverFactory.getDriver(ReadConfig.getProperty(PropertyKey.BROWSER));
             DriverManger.setDriver(driver);
+            DriverManger.getDriver().manage().window().maximize();
         }
     }
 
